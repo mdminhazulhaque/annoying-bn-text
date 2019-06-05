@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Md. Minhazul Haque" />
+    <meta name="description" content="বিরক্তিকর টেক্সট দিয়ে বন্ধুদের বিরক্ত করুন সহজেই" />
+    <title>বিরক্তিকর টেক্সট জেনারেটর</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?t=20160710">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png?t=20160710">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css" rel="stylesheet">
+    <link href="https://mdminhazulhaque.github.io/solaimanlipi/css/solaimanlipi.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: SolaimanLipi, sans-serif;
+            padding: 20px;
+            padding-top: 0px;
+        }
+        
+        textarea {
+            height: auto !important;
+            width: 50%;
+            font-size: 16px;
+            padding: 15px;
+        }
+    </style>
+    <script>
+        let bn = ["এ", "বি", "সি", "ডি", "ই", "এফ", "জি", "এইচ", "আই", "জে", "কে", "এল", "এম", "এন", "ও", "পি", "কিউ", "আর", "এস", "টি", "ইউ", "ভি", "ডব্লিউ", "এক্স", "ওয়াই", "জেড"];
+        let en = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        function translate(line) {
+            return line.replace(/./g, function(char) {
+                var idx = en.indexOf(char);
+                return idx > -1 ? bn[idx] : char;
+            });
+        }
+        
+        $(document).ready(function() {
+            $('#english').on('keyup paste', function(){
+                var en = $('#english').val();
+                $('#bangla').val(translate(en.toLowerCase()));
+            });
+            
+            // copy text functionality
+            $('#action-select-all').click(function() {
+                $('#bangla').select();
+                try {
+                    var successful = document.execCommand('copy');
+                    var msg = successful ? 'Copied' : 'Failed to copy';
+                    
+                    // flash text after selection is copied to clipboard
+                    $('#info').fadeIn(250);
+                    $('#info').html(msg);
+                    $('#info').fadeOut(2000);
+
+                } catch (err) {
+                    $('#info').html("Error copying");
+                }
+            });
+            // clear textarea when clicked
+            $('#action-clear-all').click(function() {
+                $('#bangla').val('');
+                $('#bangla').focus();
+            });
+            
+            // set cursor on textarea when document is loaded
+            $('#english').focus();
+        });
+    </script>
+</head>
+
+<body>
+    <h1>বিরক্তিকর টেক্সট জেনারেটর</h1>
+    <button class="pure-button pure-button-primary" id="action-select-all">Copy</button>
+    <button class="pure-button pure-button-primary" id="action-clear-all">Clear</button>
+    <label id="info" class="pure-button-disabled"></label>
+    <br>
+    <br>
+    <form class="pure-form">
+        <textarea id="english" placeholder="এখানে ইংরেজীতে লিখুন" rows="5"></textarea>
+    </form>
+    <br>
+    <form class="pure-form">
+        <textarea id="bangla" placeholder="" rows="5"></textarea>
+    </form>
+    <br>
+    <a target="_blank" href="https://github.com/mdminhazulhaque/annoying-bn-text">
+        <button class="pure-button"><img src="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg"> mdminhazulhaque/annoying-bn-text</button>
+    </a>
+</body>
+</html>
