@@ -10,9 +10,10 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico?t=20160710">
     <link rel="apple-touch-icon" href="apple-touch-icon.png?t=20160710">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css" rel="stylesheet">
     <link href="https://mdminhazulhaque.github.io/solaimanlipi/css/solaimanlipi.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style>body{font-family:SolaimanLipi,sans-serif;padding:20px;padding-top:0}textarea{height:auto!important;width:700px;font-size:16px;padding:15px}[disabled],textarea:disabled{background:#000;color:#fff}</style>
+    <style>body{font-family:SolaimanLipi,sans-serif;padding:20px;padding-top:0}textarea{height:auto!important;width:100%;font-size:16px;padding:15px}[disabled],textarea:disabled{background:#000;color:#fff}</style>
     <script>let bn=["\u098F","\u09AC\u09BF","\u09B8\u09BF","\u09A1\u09BF","\u0987","\u098F\u09AB","\u099C\u09BF","\u098F\u0987\u099A","\u0986\u0987","\u099C\u09C7","\u0995\u09C7","\u098F\u09B2","\u098F\u09AE","\u098F\u09A8","\u0993","\u09AA\u09BF","\u0995\u09BF\u0989","\u0986\u09B0","\u098F\u09B8","\u099F\u09BF","\u0987\u0989","\u09AD\u09BF","\u09A1\u09AC\u09CD\u09B2\u09BF\u0989","\u098F\u0995\u09CD\u09B8","\u0993\u09DF\u09BE\u0987","\u099C\u09C7\u09A1"],en=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],vow=["a","e","i","o","s"],num=["4","3","1","0","5"];function bangla_english(a){return a.replace(/./g,function(a){var b=en.indexOf(a);return-1<b?bn[b]:a})}function abol_tabol(a){return a.replace(/./g,function(a){var b=vow.indexOf(a);return-1<b?num[b]:a})}function tiring_biring(a){for(var b,c="",d=0;d<a.length;d++)b=a.charAt(d),0==d%2&&(b=b.toUpperCase()),c+=b;return c}let func_map={bangla_english:bangla_english,tiring_biring:tiring_biring,abol_tabol:abol_tabol};var _default="bangla_english";$(document).ready(function(){function a(){var a=$("#english").val(),b=func_map[_default];$("#bangla").val(b(a.toLowerCase()))}$("input:radio").click(function(){_default=$(this).attr("id"),a()}),$("#english").on("keyup paste",function(){a()}),$("#action-select-all").click(function(){$("#bangla").select();try{var a=document.execCommand("copy"),b=a?"Copied":"Failed to copy";$("#info").fadeIn(250),$("#info").html(b),$("#info").fadeOut(2e3)}catch(a){$("#info").html("Error copying")}}),$("#action-clear-all").click(function(){$("#bangla").val(""),$("#bangla").focus()}),$("#english").focus()});</script>
 </head>
 <body>
@@ -22,18 +23,22 @@
     <label id="info" class="pure-button-disabled"></label>
     <br>
     <br>
-    <form class="pure-form">
-        <textarea id="english" placeholder="এখানে ইংরেজীতে লিখুন" rows="5"></textarea>
-        <label class="pure-radio" for="bangla_english"><input id="bangla_english" name="mode" type="radio" checked> congratulations &gt; সিওএনজিআরএটিইউএলএটিআইওএনএস</label>
-        <label class="pure-radio" for="tiring_biring"><input id="tiring_biring" name="mode" type="radio"> bondhu kemon aso &gt; BoNdHu kEmOn aSo</label>
-        <label class="pure-radio" for="abol_tabol"><input id="abol_tabol" name="mode" type="radio"> ami tomake valobashi &gt; 4m1 t0m4k3 v4l0645h1</label>
-    </form>
-    <form class="pure-form">
-        <textarea id="bangla" style="background-color:#fff;color:#000;" placeholder="এখানে আউটপুট আসবে" rows="5" disabled></textarea>
-    </form>
-    <br>
-    <a target="_blank" href="https://github.com/mdminhazulhaque/annoying-bn-text">
-        <button class="pure-button"><img src="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg"> mdminhazulhaque/annoying-bn-text</button>
-    </a>
+    <div class="pure-g">
+        <div class="pure-u-1">
+            <form class="pure-form">
+                <textarea id="english" placeholder="এখানে ইংরেজীতে লিখুন" rows="5"></textarea>
+                <label class="pure-radio" for="bangla_english"><input id="bangla_english" name="mode" type="radio" checked> congratulations &gt; সিওএনজিআরএটিইউএলএটিআইওএনএস</label>
+                <label class="pure-radio" for="tiring_biring"><input id="tiring_biring" name="mode" type="radio"> bondhu kemon aso &gt; BoNdHu kEmOn aSo</label>
+                <label class="pure-radio" for="abol_tabol"><input id="abol_tabol" name="mode" type="radio"> ami tomake valobashi &gt; 4m1 t0m4k3 v4l0645h1</label>
+            </form>
+            <form class="pure-form">
+                <textarea id="bangla" style="background-color:#fff;color:#000;" placeholder="এখানে আউটপুট আসবে" rows="5" disabled></textarea>
+            </form>
+            <br>
+            <a target="_blank" href="https://github.com/mdminhazulhaque/annoying-bn-text">
+                <button class="pure-button"><img src="https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg"> mdminhazulhaque/annoying-bn-text</button>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
